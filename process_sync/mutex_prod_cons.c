@@ -32,10 +32,12 @@ void * consumidor()
 	for(i=0; i < MAX_DATOS; i++)
 	{
 	 pthread_mutex_lock(&mutex);
+
 	 while(num_datos == 0)
 	 	pthread_cond_wait(&vacio, &mutex);
 
 	 dato = buffer[posicion];
+
 	 if(posicion == 15) 
 	 	posicion = 0;
 	 else
